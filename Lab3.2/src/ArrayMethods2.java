@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class ArrayMethods2 
 {
@@ -7,8 +9,11 @@ public class ArrayMethods2
 		//String[] list2 = {"acorn", "cornnuts"};
 		//printArray(merge(list1, list2));
 		
-		int[] list3 = {4, 6, 1, 3, 4, 6, 3};
-		System.out.println(partition(list3));
+		String[] list4 = {"zap", "bat", "lamp", "corn", "apple", "oval", "rhino", "damp", "elephant", "acorn", "acre"};
+		printArray(mergeSort(list4));
+		
+		//int[] list3 = {5, 4, 3, 2, 1, 6, 3, 4, 3, 4, 1, 6, 7, 8};
+		//System.out.println(partition(list3));
 	}
 	
 	public static String[ ] merge(String[] list1, String[] list2)
@@ -78,32 +83,38 @@ public class ArrayMethods2
 		{
 			return list;
 		}
+		else
+		{
+			int half = list.length / 2;
+			String[] firstHalf = Arrays.copyOfRange(list, 0, half);
+			String[] secondHalf = Arrays.copyOfRange(list, half, list.length);
+			list = merge(mergeSort(firstHalf), mergeSort(secondHalf));
+		}
+		return list;
 	}
 	
 	public static int partition(int[] list)
 	{
-		int pivot = countLarge(list);
-		swap(list, 0, pivot);
+		int larger = countLarge(list);
+		int newPos = (list.length - larger) - 1;
+		swap(list, 0, newPos);
 		
-		/*for (int i = 0; i < pivot; i++)
+		for (int i = 0; i < newPos; i++)
 		{
-			if (list[i] <= pivot)
+			if (list[i] > list[newPos])
 			{
-				continue;
-			}
-			else
-			{
-				for (int j = pivot + 1; j < list.length; i++)
+				for (int j = newPos + 1; j < list.length; j++)
 				{
-					if (list[j] <= pivot)
+					if (list[j] <= list[newPos])
 					{
 						swap(list, i, j);
 					}
 				}
 			}
-		}*/
+		}
 		
-		return pivot;
+		printArray(list);
+		return newPos;
 	}
 	
 	public static int countLarge(int[] list)
