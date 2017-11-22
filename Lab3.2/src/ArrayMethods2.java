@@ -5,17 +5,23 @@ public class ArrayMethods2
 {
 	public static void main(String[] args)
 	{
-		//String[] list1 = {"apple", "banana", "cherry", "dude", "elephant"};
-		//String[] list2 = {"acorn", "cornnuts"};
-		//printArray(merge(list1, list2));
+		String[] list1 = {"apple", "banana", "cherry", "dude", "elephant"};
+		String[] list2 = {"acorn", "cornnuts"};
+		printArray(merge(list1, list2));
 		
 		String[] list4 = {"zap", "bat", "lamp", "corn", "apple", "oval", "rhino", "damp", "elephant", "acorn", "acre"};
 		printArray(mergeSort(list4));
 		
-		//int[] list3 = {5, 4, 3, 2, 1, 6, 3, 4, 3, 4, 1, 6, 7, 8};
-		//System.out.println(partition(list3));
+		int[] list3 = {5, 4, 3, 2, 1, 6, 3, 4, 3, 4, 1, 6, 7, 8};
+		System.out.println(partition(list3));
 	}
 	
+	/**
+	 * An array of the two lists merged together in alphabetical order.
+	 * @param list1 List of alphabetized Strings
+	 * @param list2 List of alphabetized Strings
+	 * @return A new list with the combination of the two lists in alphabetical order
+	 */
 	public static String[ ] merge(String[] list1, String[] list2)
 	{
 		String[] list3;
@@ -77,6 +83,11 @@ public class ArrayMethods2
 
 	}
 	
+	/**
+	 * Sorts an list of strings and organizes it into alphabetical order.
+	 * @param list List of strings
+	 * @return Original list alphabetized
+	 */
 	public static String[] mergeSort(String[] list)
 	{
 		if (list.length == 1)
@@ -93,6 +104,11 @@ public class ArrayMethods2
 		return list;
 	}
 	
+	/**
+	 * Rearranges the array of integers so the first element in the array is in between numbers that are less than and greater than the first element.
+	 * @param list Array of integers
+	 * @return Original array of numbers, but the numbers left of the pivot is less than or equal to the pivot and the numbers to the right is greater than the pivot.
+	 */
 	public static int partition(int[] list)
 	{
 		int larger = countLarge(list);
@@ -117,6 +133,11 @@ public class ArrayMethods2
 		return newPos;
 	}
 	
+	/**
+	 * Calculates how many numbers are greater than the first element in the array.
+	 * @param list Array of integers
+	 * @return Number of integers greater than the first element in the array.
+	 */
 	public static int countLarge(int[] list)
 	{
 		int count = 0;
@@ -130,6 +151,12 @@ public class ArrayMethods2
 		return count;
 	}
 	
+	/**
+	 * Swaps two number's positions.
+	 * @param arr Array of integers
+	 * @param i Position of the first number you want to swap.
+	 * @param j Position of the second number you want to swap
+	 */
 	public static void swap(int[] arr, int i, int j)
 	{
 		int temp = arr[i];
@@ -137,6 +164,10 @@ public class ArrayMethods2
 		arr[j] = temp;
 	}
 	
+	/**
+	 * Prints out each element of the array
+	 * @param arr Array that is being printed out
+	 */
 	public static void printArray(String[] arr)
 	{
 		for(int i = 0; i < arr.length; i++)
@@ -146,6 +177,10 @@ public class ArrayMethods2
 		System.out.println();
 	}
 	
+	/**
+	 * Prints out each element of the array
+	 * @param arr Array that is being printed out
+	 */
 	public static void printArray(int[] arr)
 	{
 		for(int i = 0; i < arr.length; i++)
